@@ -424,7 +424,8 @@
         </div>
         <input id="imgbbUrl" type="url" inputmode="url" autocomplete="off" placeholder="https://i.ibb.co/....jpg">
       </div>
-      <textarea id="imagePrompt" readonly style="min-height:300px" aria-label="이미지 추가 수정 프롬프트"></textarea>
+      <p class="hint">이미지를 넣을 위치를 바꾸고 싶다면 아래 프롬프트의 문장을 길게 눌러 선택한 뒤 원하는 내용으로 직접 수정하세요.</p>
+      <textarea id="imagePrompt" style="min-height:300px" aria-label="이미지 추가 수정 프롬프트"></textarea>
       <button id="imagePromptCopy" type="button" class="btn btn-outline">📋 이미지 추가 프롬프트 복사</button>
       <div id="imageStatus" class="status" role="status" aria-live="polite"></div>
     </section>
@@ -490,6 +491,7 @@ Canvas에서 바로 미리보기할 수 있게 해줘.</textarea>
       const savedToast = document.getElementById('savedToast');
       const storageKey = 'vibePortfolioWorksheetV2';
       const imageStorageKey = 'vibePortfolioImageMissionV1';
+      const imagePromptStorageKey = 'vibePortfolioImagePromptV1';
       let toastTimer;
 
       const rawSelected = name => form.querySelector(`[name="${name}"]:checked`)?.value || '';
@@ -775,10 +777,17 @@ ${mission}
       document.getElementById('upgradePromptCopy').addEventListener('click', () => copyText(document.getElementById('upgradePrompt').value, upgradeStatus));
       const imageStatus = document.getElementById('imageStatus');
       const imgbbUrl = document.getElementById('imgbbUrl');
+      const imagePrompt = document.getElementById('imagePrompt');
       imgbbUrl.value = localStorage.getItem(imageStorageKey) || '';
       imgbbUrl.addEventListener('input', () => {
         localStorage.setItem(imageStorageKey, imgbbUrl.value);
         updateImagePrompt();
+        localStorage.setItem(imagePromptStorageKey, imagePrompt.value);
+        imageStatus.textContent = '';
+        showSaved();
+      });
+      imagePrompt.addEventListener('input', () => {
+        localStorage.setItem(imagePromptStorageKey, imagePrompt.value);
         imageStatus.textContent = '';
         showSaved();
       });
@@ -799,6 +808,7 @@ ${mission}
         form.querySelectorAll('input[type="file"]').forEach(input => { input.value = ''; });
         localStorage.removeItem(storageKey);
         localStorage.removeItem(imageStorageKey);
+        localStorage.removeItem(imagePromptStorageKey);
         imgbbUrl.value = '';
         updateImagePrompt();
         result.classList.remove('show');
@@ -819,7 +829,9 @@ ${mission}
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
       updateUpgradePrompt();
-      updateImagePrompt();
+      const savedImagePrompt = localStorage.getItem(imagePromptStorageKey);
+      if (savedImagePrompt) imagePrompt.value = savedImagePrompt;
+      else updateImagePrompt();
       loadForm();
     })();
   </script>
