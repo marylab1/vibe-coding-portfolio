@@ -98,7 +98,7 @@
     .btn-large { width: 100%; min-height: 64px; font-size: 1.1rem; }
     .result { display: none; }
     .result.show { display: block; }
-    .result textarea { min-height: 420px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .88rem; background: #1f2233; color: #f4f4fb; border-color: #1f2233; }
+    .result textarea { min-height: 420px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .88rem; background: #fff; color: var(--ink); border-color: #d8dbea; }
     .status { min-height: 26px; margin-top: 10px; color: var(--ok); text-align: center; font-weight: 900; }
     .error { color: #bd2d3b; }
     .saved { position: fixed; right: 12px; bottom: 12px; z-index: 5; padding: 8px 12px; border-radius: 999px; color: white; background: rgba(32,35,58,.88); font-size: .8rem; opacity: 0; transform: translateY(8px); transition: .2s; pointer-events: none; }
@@ -135,8 +135,7 @@
     <section class="card">
       <h2 class="card-title"><span class="num">1</span>패들렛에서 작품 고르기</h2>
       <p class="hint">1~6회차 작품을 돌아보고 서로 다른 대표작품 2개를 고릅니다.</p>
-      <a class="btn-link btn-primary" href="https://padlet.com/shshin0781/breakout-room/nRxeqrlPjOdL456P-OPZ4XKlDV5Kdvqg1" target="_blank" rel="noopener">📌 4반 작품 모음 바로 열기</a>
-      <p class="link-note" style="margin-top:14px">3·4차시 홈페이지에는 공룡게임이 들어 있습니다. 홈페이지를 골랐다면 1·2차시 공룡게임은 함께 고르지 않습니다.</p>
+      <a class="btn-link btn-primary" href="https://padlet.com/shshin0781/breakout-room/xPdL4gEdbYe1qpwK-OPZ4XKlDV5Kdvqg1" target="_blank" rel="noopener">📌 7반 작품 바로열기</a>
     </section>
 
     <form id="worksheet" novalidate>
@@ -387,6 +386,7 @@
       <textarea id="promptOutput" aria-label="완성된 프롬프트"></textarea>
       <div class="btn-row">
         <button id="copyBtn" type="button" class="btn btn-primary">📋 프롬프트 복사</button>
+        <a class="btn btn-primary" href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini 바로가기 ↗</a>
         <p class="hint" style="margin:0">💡 Gemini에서 <strong>Canvas를 선택한 뒤</strong> 프롬프트를 붙여넣으세요.</p>
       </div>
       <div id="copyStatus" class="status" role="status" aria-live="polite"></div>
@@ -463,15 +463,6 @@ Canvas에서 바로 미리보기할 수 있게 해줘.</textarea>
       <button id="previewCopy" type="button" class="btn btn-outline">📋 미리보기 해결 문장 복사</button>
       <div id="helpStatus" class="status" role="status" aria-live="polite"></div>
 
-      <hr style="margin:28px 0; border:0; border-top:1px solid #e5e7eb">
-      <h3>③ LiveCodes를 비상용으로 사용할 때</h3>
-      <ol style="padding-left:24px; line-height:1.9; margin-bottom:0">
-        <li><a href="https://livecodes.io/" target="_blank" rel="noopener">LiveCodes 열기</a></li>
-        <li>Gemini가 만든 전체 HTML 코드 복사하기</li>
-        <li>HTML 영역에 붙여넣기</li>
-        <li>결과 화면 확인하기</li>
-        <li>수업 전에 학교 태블릿에서 정상 작동을 확인한 경우에만 사용하기</li>
-      </ol>
     </section>
 
     <div class="btn-row">
